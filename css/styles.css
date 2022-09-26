@@ -20,7 +20,7 @@ body{
 .header{
     padding-top: 10px;
     padding-right: 10px;
-    padding-bottom: 40px;
+    padding-bottom: 10px;
     padding-left: 10px;
     background: none;
     color: white;
@@ -38,11 +38,11 @@ body{
     width : 150px;
     justify-content: flex-end;
 }
-  
+
 .menu-left{
     display:flex;
-    width : 150px;
-    justify-content: space-evenly;
+    width : fit-content;
+    justify-content: flex-start;
 }
   
 .button{
@@ -79,6 +79,28 @@ ion-icon {
     align-items: center;
     flex-direction: column;
   }
+
+#key-container{
+    width: 600px;
+    align-items: center;
+    display: flex;
+    justify-content: space-evenly;  
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+}
+#mbox{
+    width: 100%;
+    align-items: center;
+    display: flex;
+    justify-content: center; 
+    flex-direction: column;  
+}
+.vbox{
+    align-items: right;
+    width: 5%;
+    padding:10px;
+}
 #letter-board{
     display: flex;
     background-color: white;
@@ -86,11 +108,27 @@ ion-icon {
     display: flex;
     justify-content: center;
 }
+#plusbox{
+    display: none; /* Hidden by default */
+    z-index: 1; /* Sit on top */
+    width: 20px; /* Full width */
+    height: 20px;
+    overflow: auto; /* Enable scroll if needed */
+    background-color: none; /* Black w/ opacity */
+    align-content: left;
+}
+#plus{
+    font-size: 20px;
+    font-weight: 500;
+    color: transparent;
+    background-color: none; 
+    position: absolute;
+}
 #key-box{
     text-align: center;
     align-self: center;
     font-size: 30px;
-    width: 80%;
+    width: fit-content;
     height: 20px;
     border: 0px solid white;
     color: var(--accent);
@@ -123,10 +161,13 @@ ion-icon {
     position: static
 }
 #bar-container{
-    width : 100%;
+    width : 99%;
     height: 10%;
     margin-top: 10px;
     margin-bottom: 10px;
+    margin-left:auto;
+    margin-right: auto;
+    align-content:center;
 }
 .bar{
     border-radius: 10px;
@@ -169,13 +210,14 @@ ion-icon {
 #game-board{
     width: 600px;
     height: 80%;
-    align-items: center
+    align-items: center;
+    justify-content:center;
 }
 #word-columns {
     padding-left: 10px;
     padding-top:10px;
     display: grid;
-    grid-template-rows: repeat(2, auto);
+    grid-template-rows: repeat(10, auto);
     grid-auto-flow: column;
     grid-gap: 5px;
     box-sizing: border-box;
@@ -212,12 +254,20 @@ li{
     justify-content: center;
 }
 
+
 .blinking-cursor {
     font-weight: 100;
     font-size: 30px;
+    color: transparent;
     animation: 1s blink step-end infinite;
-  }
-  
+}
+
+.animate__animated.animate__headShake {
+    --animate-duration: 0.8s;
+}
+.animate__animated.animate__fadeOutUp {
+    --animate-duration: 0.8s;
+}
 @keyframes blink{
     from, to {
         color: transparent;
@@ -225,4 +275,17 @@ li{
     50% {
         color: var(--accent-t);
     }
+}
+
+.k1Animate{
+    animation-name: k1;
+    animation-duration: 0.6s;
+    animation-timing-function: linear;
+    animation-iteration-count: 1;
+  }
+
+@keyframes k1{
+    0%{color:var(--accent);transform: translateY(0);}
+    80%{color:var(--accent);transform: translateY(-24px);}
+    100%{color: transparent;transform: translateY(-30px);}
 }
