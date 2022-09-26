@@ -12,6 +12,9 @@ document.addEventListener("DOMContentLoaded", () => {
     var progressBar = document.getElementById("bar-show")
     var numWordsFound = document.getElementById("words-found")
     var wordColumnsDisplay = document.getElementById("word-columns")
+    //var cursor = document.getElementById("cursor")
+    keyBox.textContent = '|';
+    keyBox.classList.add("blinking-cursor");
     var gottenPoints = 0;
     var foundWords = [];
     var pointsMap = {};
@@ -42,13 +45,11 @@ document.addEventListener("DOMContentLoaded", () => {
             char = String.fromCharCode(evt.keyCode).toLowerCase()
             if(/[a-z]/.test(char)){
                 updateCurrentWord(char)
+                keyBox.classList.remove("blinking-cursor");
             }
         }
     }
-    function updateCurrentWordDisplay(){
-        let currentWord = currentWordArr.join('')
-        keyBox.textContent = currentWord;
-    }
+
 
     function updatePoints(word){
         gottenPoints = gottenPoints + pointsMap[word]
@@ -67,17 +68,28 @@ document.addEventListener("DOMContentLoaded", () => {
         console.log(progressBar.style)
     }
 
+
+    function updateCurrentWordDisplay(){
+        let currentWord = currentWordArr.join('')
+        keyBox.textContent = currentWord;
+    }
     function updateCurrentWord(char){
         currentWordArr.push(char);
         updateCurrentWordDisplay();
     }
-
     function handleDeleteLetter(){
         if(currentWordArr.length >0){
             currentWordArr.pop()
             updateCurrentWordDisplay();
         }
     }
+    function revertDisplay(){
+        //revert keybox back to blinking cursor display
+        keyBox.classList.add("blinking-cursor");
+        keyBox.textContent = '|';
+    }
+
+
 
     function sortDisplay(){
         //Sort the found words alphabetically
@@ -99,8 +111,9 @@ document.addEventListener("DOMContentLoaded", () => {
         w.textContent = currentWord;
         li.appendChild(w)
         sortDisplay();
-        animateWrong();
-        const timeout = setTimeout(updateCurrentWordDisplay, 1000);
+        animatePoints();
+        
+        const timeout = setTimeout(revertDisplay, 200);
         //     updatePoints(currentWord);
         // if(words.includes(currentWord)){
         //     console.log("correct")
@@ -132,8 +145,28 @@ document.addEventListener("DOMContentLoaded", () => {
 
         node.addEventListener('animationend', handleAnimationEnd, {once: true});
     });
+    const animatekek = (element, animationName) =>
+    // We create a Promise and return it
+    new Promise((resolve, reject) => {
+        const node = element;
+        node.classList.add(animationName);
+        // When the animation ends, we clean the classes and resolve the Promise
+        function handleAnimationEnd(event) {
+        event.stopPropagation();
+        node.classList.remove(animationName);
+        resolve('Animation ended');
+        }
+        node.addEventListener('animationend', handleAnimationEnd, {once: true});
+    });
     function animateWrong(){
         animateCSS(keyBox, 'headShake')
+    }
+
+    function animatePoints(){
+        let el = document.getElementById("plus");
+        el.textContent = "+5"
+        animatekek(el, "k1Animate")
+
     }
 
     function createSquares(letters){
