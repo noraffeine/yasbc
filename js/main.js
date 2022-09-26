@@ -18,9 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 return key
             }
             var letters = getrandomkey(all_games)
-            console.log(letters) 
             var words = all_games[letters]
-            console.log(words) 
             var currentWordArr = [];
             var availablePoints = 0;
             var keyBox = document.getElementById("key-box")
