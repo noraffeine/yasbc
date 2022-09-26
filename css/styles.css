@@ -89,17 +89,18 @@ ion-icon {
 #key-box{
     text-align: center;
     align-self: center;
-    font-size: 15px;
+    font-size: 30px;
     width: 80%;
     height: 20px;
     border: 0px solid white;
-    color: var(--main-grey);
+    color: var(--accent);
     text-transform: uppercase;
-    font-weight: bold;
+    font-weight: 400;
+    letter-spacing: 3px;
     margin-bottom:10px
 
 }
-.points-text{
+#points-text{
     align-self: right;
     text-align: right;
     font-weight: 500;
@@ -138,7 +139,7 @@ ion-icon {
 }
 
 #bar-show{
-    width: 60%;
+    width: 0%;
     color: var(--accent);
     background-color: var(--accent);
     align-self:left;
