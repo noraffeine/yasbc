@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
     var currentWordArr = [];
     var availablePoints = 0;
     var keyBox = document.getElementById("key-box")
+    keyBox.classList.add("animate__animated");
     var pointsDisplay = document.getElementById("points-text")
     var progressBar = document.getElementById("bar-show")
     var numWordsFound = document.getElementById("words-found")
@@ -98,8 +99,8 @@ document.addEventListener("DOMContentLoaded", () => {
         w.textContent = currentWord;
         li.appendChild(w)
         sortDisplay();
-        
-        updateCurrentWordDisplay();
+        animateWrong();
+        const timeout = setTimeout(updateCurrentWordDisplay, 1000);
         //     updatePoints(currentWord);
         // if(words.includes(currentWord)){
         //     console.log("correct")
@@ -112,6 +113,27 @@ document.addEventListener("DOMContentLoaded", () => {
     
     function checkWord(){
 
+    }
+
+    const animateCSS = (element, animation, prefix = 'animate__') =>
+    // We create a Promise and return it
+    new Promise((resolve, reject) => {
+        const animationName = `${prefix}${animation}`;
+        const node = element;
+
+        node.classList.add(animationName);
+
+        // When the animation ends, we clean the classes and resolve the Promise
+        function handleAnimationEnd(event) {
+        event.stopPropagation();
+        node.classList.remove(animationName);
+        resolve('Animation ended');
+        }
+
+        node.addEventListener('animationend', handleAnimationEnd, {once: true});
+    });
+    function animateWrong(){
+        animateCSS(keyBox, 'headShake')
     }
 
     function createSquares(letters){
