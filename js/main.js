@@ -9,12 +9,18 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     getJson(url).then(
         function(value) {
-            console.log(value)
             var all_games = value
-            var letters = "efmu"; 
-            console.log(all_games)
-            var words = ["merciful", "perfumed", "farmhouse", "muffled", "furthermore", "motherfucker", "manufacturers", "magnifique", "manufactured", "fume", "masterful", "dumbfounded", "malfunctioned", "meaningful", "perfumes", "fumes", "manufacturer", "muffler", "fundamentals", "formulate", "misfortunes", "uniformed", "remorseful", "foursome", "shamefully", "fumble", "unfathomable", "unconfirmed", "referendum", "formulated", "mercifully", "camouflage", "mummified", "uncomfortable", "fundamentally", "fumigate", "fulfilment", "fundamental", "shameful", "uninformed", "fundamentalists", "perfume", "manufactures", "femur", "misfortune", "fumigated", "muffle", "fulfilment", "circumference", "fumbled", "camouflaged", "fundamentalist", "manufacture"];
-            //var words = ["fume","farmhouse","femur"]
+            function getrandomkey(i){
+                let keys = Object.keys(i);
+                let len = keys.length;
+                let rnd = Math.floor(Math.random() * len);
+                let key = keys[rnd];
+                return key
+            }
+            var letters = getrandomkey(all_games)
+            console.log(letters) 
+            var words = all_games[letters]
+            console.log(words) 
             var currentWordArr = [];
             var availablePoints = 0;
             var keyBox = document.getElementById("key-box")
