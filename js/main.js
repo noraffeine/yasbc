@@ -31,6 +31,25 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     createSquares(letters);
+    var help_modal = document.getElementById("instructions-container")
+    var helpButton = document.getElementById("help-button")
+    var span = document.getElementsByClassName("close")[0];
+    helpButton.onclick = function() {
+        help_modal.style.display = "block";
+
+      }
+      
+      // When the user clicks on <span> (x), close the modal
+    // span.onclick = function() {
+    //     help_modal.style.display = "none";
+    //   }
+      
+      // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        if (event.target == help_modal) {
+            help_modal.style.display = "none";
+        }
+      }
     window.addEventListener("keyup", checkKeyPressed, false);
 
     function checkKeyPressed(evt) {
@@ -191,15 +210,15 @@ document.addEventListener("DOMContentLoaded", () => {
         let letterCount = {};
         //let map = {4:1, 5:1, 6:1, 7:2, 8:2, 9:2, 10:3, 11:3, 12:3, 9:)
         let points = 0;
-        for (var i = 0; i < letters.length; i++){
-            letterCount[letters[i]] = 0;
-        }
-        for (var i = 0; i < w.length; i++){
-            if (letters.includes(w[i])){
-                letterCount[w[i]] = letterCount[w[i]]+1;
-                points = points + 1;
-            } 
-        }
+        // for (var i = 0; i < letters.length; i++){
+        //     letterCount[letters[i]] = 0;
+        // }
+        // for (var i = 0; i < w.length; i++){
+        //     if (letters.includes(w[i])){
+        //         letterCount[w[i]] = letterCount[w[i]]+1;
+        //         points = points + 1;
+        //     } 
+        // }
         
         if (w.length == 4){
             points = points + 1;
