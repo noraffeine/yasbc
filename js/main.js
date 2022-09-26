@@ -3,8 +3,8 @@ document.addEventListener("DOMContentLoaded", () => {
     
     var letters = "efmu"; 
     
-    //var words = ["merciful", "perfumed", "farmhouse", "muffled", "furthermore", "motherfucker", "manufacturers", "magnifique", "manufactured", "fume", "masterful", "dumbfounded", "malfunctioned", "meaningful", "perfumes", "fumes", "manufacturer", "muffler", "fundamentals", "formulate", "misfortunes", "uniformed", "remorseful", "foursome", "shamefully", "fumble", "unfathomable", "unconfirmed", "referendum", "formulated", "mercifully", "camouflage", "mummified", "uncomfortable", "fundamentally", "fumigate", "fulfilment", "fundamental", "shameful", "uninformed", "fundamentalists", "perfume", "manufactures", "femur", "misfortune", "fumigated", "muffle", "fulfilment", "circumference", "fumbled", "camouflaged", "fundamentalist", "manufacture"];
-    var words = ["fume","farmhouse","femur"]
+    var words = ["merciful", "perfumed", "farmhouse", "muffled", "furthermore", "motherfucker", "manufacturers", "magnifique", "manufactured", "fume", "masterful", "dumbfounded", "malfunctioned", "meaningful", "perfumes", "fumes", "manufacturer", "muffler", "fundamentals", "formulate", "misfortunes", "uniformed", "remorseful", "foursome", "shamefully", "fumble", "unfathomable", "unconfirmed", "referendum", "formulated", "mercifully", "camouflage", "mummified", "uncomfortable", "fundamentally", "fumigate", "fulfilment", "fundamental", "shameful", "uninformed", "fundamentalists", "perfume", "manufactures", "femur", "misfortune", "fumigated", "muffle", "fulfilment", "circumference", "fumbled", "camouflaged", "fundamentalist", "manufacture"];
+    //var words = ["fume","farmhouse","femur"]
     var currentWordArr = [];
     var availablePoints = 0;
     var keyBox = document.getElementById("key-box")
@@ -210,15 +210,15 @@ document.addEventListener("DOMContentLoaded", () => {
         let letterCount = {};
         //let map = {4:1, 5:1, 6:1, 7:2, 8:2, 9:2, 10:3, 11:3, 12:3, 9:)
         let points = 0;
-        // for (var i = 0; i < letters.length; i++){
-        //     letterCount[letters[i]] = 0;
-        // }
-        // for (var i = 0; i < w.length; i++){
-        //     if (letters.includes(w[i])){
-        //         letterCount[w[i]] = letterCount[w[i]]+1;
-        //         points = points + 1;
-        //     } 
-        // }
+        for (var i = 0; i < letters.length; i++){
+            letterCount[letters[i]] = 0;
+        }
+        for (var i = 0; i < w.length; i++){
+            if (letters.includes(w[i])){
+                letterCount[w[i]] = letterCount[w[i]]+1;
+                points = points + 1;
+            } 
+        }
         
         if (w.length == 4){
             points = points + 1;

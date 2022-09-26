@@ -61,11 +61,11 @@ p{
     margin-right: auto;
     padding: 3px;
     width: 300px;
-    height:130px;
+    height:120px;
     position:absolute;
     left: 50%;
     top: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(80%, 0%);
     box-sizing: border-box;
     box-shadow: 0 4px 23px 0 rgb(0 0 0 / 10%);
 }
@@ -88,6 +88,16 @@ p{
     justify-content: center;
     align-content: center;
   }
+#instructions-container {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: hidden; /* Enable scroll if needed *//* Black w/ opacity */
+    justify-content: center;
+    align-content: center;
+}
   
 /* .close {
     color: #aaaaaa;
