@@ -52,7 +52,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     function updatePoints(word){
-        gottenPoints = gottenPoints + pointsMap[word]
+        let points = pointsMap[word]
+        gottenPoints = gottenPoints + points
+        animatePoints(points);
 
         pointsDisplay.textContent = gottenPoints;
         if (foundWords.length == 1){
@@ -63,11 +65,9 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         
         let progress = (gottenPoints/availablePoints)*100;
-        console.log(progress)
         progressBar.style.width = `${progress}%`
-        console.log(progressBar.style)
-    }
 
+    }
 
     function updateCurrentWordDisplay(){
         let currentWord = currentWordArr.join('')
@@ -88,9 +88,6 @@ document.addEventListener("DOMContentLoaded", () => {
         keyBox.classList.add("blinking-cursor");
         keyBox.textContent = '|';
     }
-
-
-
     function sortDisplay(){
         //Sort the found words alphabetically
         foundWords.sort()
@@ -99,31 +96,31 @@ document.addEventListener("DOMContentLoaded", () => {
             w.textContent = foundWords[i]
         }
     }
-    function handleSubmitWord(){
-        let currentWord = currentWordArr.join('')
-        foundWords.push(currentWord)
-        currentWordArr = []; 
+    function updateFoundWordsDisplay(word){
         let li = document.createElement("li");
         wordColumnsDisplay.appendChild(li)
         let w = document.createElement("span");
         w.setAttribute("id", "w" + String(foundWords.length));
         w.classList.add("found-word");
-        w.textContent = currentWord;
+        w.textContent = word;
         li.appendChild(w)
-        sortDisplay();
-        animatePoints();
-        
-        const timeout = setTimeout(revertDisplay, 200);
-        //     updatePoints(currentWord);
-        // if(words.includes(currentWord)){
-        //     console.log("correct")
-        //     foundWords.push(currentWord)
-        //     updateCurrentWordDisplay();
-        //     updatePoints(currentWord);
-
-        // }
+    }
+    function handleSubmitWord(){
+        let currentWord = currentWordArr.join('')
+        currentWordArr = []; 
+        if(words.includes(currentWord)){
+            foundWords.push(currentWord) 
+            updateFoundWordsDisplay();
+            sortDisplay();
+            updatePoints(currentWord);
+            
         }
-    
+        if(!words.includes(currentWord)){
+            animateWrong();
+        }
+        const timeout = setTimeout(revertDisplay, 1000);
+
+    }
     function checkWord(){
 
     }
@@ -162,11 +159,10 @@ document.addEventListener("DOMContentLoaded", () => {
         animateCSS(keyBox, 'headShake')
     }
 
-    function animatePoints(){
+    function animatePoints(points){
         let el = document.getElementById("plus");
-        el.textContent = "+5"
+        el.textContent = `+${points}`
         animatekek(el, "k1Animate")
-
     }
 
     function createSquares(letters){
