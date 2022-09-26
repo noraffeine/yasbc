@@ -115,18 +115,18 @@ ion-icon {
     text-align: left;
     padding-left: 10px;
     padding-top:10px;
+    margin-bottom: 5px;
     font-size: 15px;
     font-weight: 400;
     letter-spacing: 3px;
     color: var(--main-black);
+    position: static
 }
 #bar-container{
     width : 100%;
     height: 10%;
     margin-top: 10px;
     margin-bottom: 10px;
-    margin-left: 2px;
-    margin-right: 2px;
 }
 .bar{
     border-radius: 10px;
@@ -148,10 +148,8 @@ ion-icon {
 
 #word-container{
     border-radius: 6px;
-    column-count: 3;
-    text-align: left;
     display: flex;
-    flex-direction: column;
+    flex-direction: column; 
     background-color: white;
     border: 0px solid #aaaaaa;
     font-size: 14px;
@@ -165,13 +163,38 @@ ion-icon {
     height:80%;
     box-sizing: border-box;
     overflow-y: auto;
-    overflow-x: scroll;
     box-shadow: 0 4px 23px 0 rgb(0 0 0 / 5%);
   }
+
 #game-board{
-    width: 500px;
+    width: 600px;
     height: 80%;
     align-items: center
+}
+#word-columns {
+    padding-left: 10px;
+    padding-top:10px;
+    display: grid;
+    grid-template-rows: repeat(2, auto);
+    grid-auto-flow: column;
+    grid-gap: 5px;
+    box-sizing: border-box;
+    justify-content: left;
+  }
+li{
+    list-style: none;
+    border-bottom: 1px solid var(--main-grey);
+    width: 150px;
+    margin-right:30px;
+    margin-top:5px;
+    text-align: left;
+    display: inline-block;
+}
+.found-word{
+    color: var(--main-black);
+    font-size: 15px;
+    font-weight: 400;
+    letter-spacing: 2px;
 }
 .square {
     border: 2px solid var(--accent);

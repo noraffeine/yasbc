@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
     var pointsDisplay = document.getElementById("points-text")
     var progressBar = document.getElementById("bar-show")
     var numWordsFound = document.getElementById("words-found")
+    var wordColumnsDisplay = document.getElementById("word-columns")
     var gottenPoints = 0;
     var foundWords = [];
     var pointsMap = {};
@@ -80,13 +81,23 @@ document.addEventListener("DOMContentLoaded", () => {
     function handleSubmitWord(){
         let currentWord = currentWordArr.join('')
         currentWordArr = []; 
-        if(words.includes(currentWord)){
-            console.log("correct")
-            foundWords.push(currentWord)
-            updateCurrentWordDisplay();
-            updatePoints(currentWord);
+        let li = document.createElement("li");
+        wordColumnsDisplay.appendChild(li)
+        let w = document.createElement("w");
+        w.classList.add("found-word");
+        w.textContent = currentWord;
+        //w.setAttribute("id", String(i+1));
+        li.appendChild(w)
+        foundWords.push(currentWord)
+        updateCurrentWordDisplay();
+        //     updatePoints(currentWord);
+        // if(words.includes(currentWord)){
+        //     console.log("correct")
+        //     foundWords.push(currentWord)
+        //     updateCurrentWordDisplay();
+        //     updatePoints(currentWord);
 
-        }
+        // }
         }
     
     function checkWord(){
