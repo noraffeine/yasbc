@@ -1,0 +1,204 @@
+*{
+    margin:0;
+    padding:0;
+
+}
+:root {
+  --main-black:rgb(33,33,33); /*a touch lighter than black */
+  --main-grey:rgb(240, 240, 240);
+  --accent: rgb(124, 194, 219);
+  --accent-dark: rgb(74, 124, 169);
+  --accent-t: rgba(124, 194, 219,0.5);
+}
+
+html, 
+body{
+    height:100%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.header{
+    padding-top: 10px;
+    padding-right: 10px;
+    padding-bottom: 40px;
+    padding-left: 10px;
+    background: none;
+    color: white;
+    font-size: 30px;
+    border-bottom: 0px solid var(--main-black);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+}
+  
+.menu-right{
+    display:flex;
+    width : 150px;
+    justify-content: flex-end;
+}
+  
+.menu-left{
+    display:flex;
+    width : 150px;
+    justify-content: space-evenly;
+}
+  
+.button{
+    border:none;
+    background: white;
+    width:40px;
+    height:40px;
+    cursor: pointer;
+}
+  
+ion-icon {
+    font-size: 25px;
+    --ionicon-stroke-width: 2px;
+    pointer-events: none;
+    color: var(--main-black);
+}
+#game-title{
+    color: var(--main-black);
+    font-size: 30px;
+    font-weight: 500; 
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    letter-spacing: 3px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+
+#game-container{
+    display: flex;
+    background-color: white;
+    height: 100%;
+    align-items: center;
+    flex-direction: column;
+  }
+#letter-board{
+    display: flex;
+    background-color: white;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+}
+#key-box{
+    text-align: center;
+    align-self: center;
+    font-size: 15px;
+    width: 80%;
+    height: 20px;
+    border: 0px solid white;
+    color: var(--main-grey);
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-bottom:10px
+
+}
+.points-text{
+    align-self: right;
+    text-align: right;
+    font-weight: 500;
+    padding-right: 5px;
+    padding-bottom: 5px;
+    font-size: 20px;
+    letter-spacing: 3px;
+    color: var(--accent);
+}
+
+#words-found{
+    text-align: left;
+    padding-left: 10px;
+    padding-top:10px;
+    font-size: 15px;
+    font-weight: 400;
+    letter-spacing: 3px;
+    color: var(--main-black);
+}
+#bar-container{
+    width : 100%;
+    height: 10%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 2px;
+    margin-right: 2px;
+}
+.bar{
+    border-radius: 10px;
+    border: 0px solid var(--main-grey);
+    height: 5px;
+    color: var(--main-grey);
+    background-color: var(--main-grey);
+    width: 100%;
+
+}
+
+#bar-show{
+    width: 60%;
+    color: var(--accent);
+    background-color: var(--accent);
+    align-self:left;
+    z-index: 10
+}
+
+#word-container{
+    border-radius: 6px;
+    column-count: 3;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    border: 0px solid #aaaaaa;
+    font-size: 14px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--main-black);
+    margin-left: auto;
+    margin-right: auto;
+    margin-top:10px;
+    padding-top: 3px;
+    width: 100%;
+    height:80%;
+    box-sizing: border-box;
+    overflow-y: auto;
+    overflow-x: scroll;
+    box-shadow: 0 4px 23px 0 rgb(0 0 0 / 5%);
+  }
+#game-board{
+    width: 500px;
+    height: 80%;
+    align-items: center
+}
+.square {
+    border: 2px solid var(--accent);
+    background-color: var(--accent);
+    width: 50px;
+    height:50px;
+    font-size: 30px;
+    margin-left: 10px;
+    margin-right: 10px;
+    font-weight: 600;
+    color: var(--main-black);
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.blinking-cursor {
+    font-weight: 100;
+    font-size: 30px;
+    animation: 1s blink step-end infinite;
+  }
+  
+@keyframes blink{
+    from, to {
+        color: transparent;
+    }
+    50% {
+        color: var(--accent-t);
+    }
+}
