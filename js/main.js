@@ -78,17 +78,27 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
+    function sortDisplay(){
+        //Sort the found words alphabetically
+        foundWords.sort()
+        for (var i = 0; i < foundWords.length; i++){
+            let w = document.getElementById("w" + String(i+1))
+            w.textContent = foundWords[i]
+        }
+    }
     function handleSubmitWord(){
         let currentWord = currentWordArr.join('')
+        foundWords.push(currentWord)
         currentWordArr = []; 
         let li = document.createElement("li");
         wordColumnsDisplay.appendChild(li)
-        let w = document.createElement("w");
+        let w = document.createElement("span");
+        w.setAttribute("id", "w" + String(foundWords.length));
         w.classList.add("found-word");
         w.textContent = currentWord;
-        //w.setAttribute("id", String(i+1));
         li.appendChild(w)
-        foundWords.push(currentWord)
+        sortDisplay();
+        
         updateCurrentWordDisplay();
         //     updatePoints(currentWord);
         // if(words.includes(currentWord)){
