@@ -3,7 +3,8 @@ document.addEventListener("DOMContentLoaded", () => {
     
     var letters = "efmu"; 
     
-    var words = ["merciful", "perfumed", "farmhouse", "muffled", "furthermore", "motherfucker", "manufacturers", "magnifique", "manufactured", "fume", "masterful", "dumbfounded", "malfunctioned", "meaningful", "perfumes", "fumes", "manufacturer", "muffler", "fundamentals", "formulate", "misfortunes", "uniformed", "remorseful", "foursome", "shamefully", "fumble", "unfathomable", "unconfirmed", "referendum", "formulated", "mercifully", "camouflage", "mummified", "uncomfortable", "fundamentally", "fumigate", "fulfilment", "fundamental", "shameful", "uninformed", "fundamentalists", "perfume", "manufactures", "femur", "misfortune", "fumigated", "muffle", "fulfilment", "circumference", "fumbled", "camouflaged", "fundamentalist", "manufacture"];
+    //var words = ["merciful", "perfumed", "farmhouse", "muffled", "furthermore", "motherfucker", "manufacturers", "magnifique", "manufactured", "fume", "masterful", "dumbfounded", "malfunctioned", "meaningful", "perfumes", "fumes", "manufacturer", "muffler", "fundamentals", "formulate", "misfortunes", "uniformed", "remorseful", "foursome", "shamefully", "fumble", "unfathomable", "unconfirmed", "referendum", "formulated", "mercifully", "camouflage", "mummified", "uncomfortable", "fundamentally", "fumigate", "fulfilment", "fundamental", "shameful", "uninformed", "fundamentalists", "perfume", "manufactures", "femur", "misfortune", "fumigated", "muffle", "fulfilment", "circumference", "fumbled", "camouflaged", "fundamentalist", "manufacture"];
+    var words = ["fume","farmhouse","femur"]
     var currentWordArr = [];
     var availablePoints = 0;
     var keyBox = document.getElementById("key-box")
@@ -33,21 +34,23 @@ document.addEventListener("DOMContentLoaded", () => {
     window.addEventListener("keyup", checkKeyPressed, false);
 
     function checkKeyPressed(evt) {
-        if (evt.keyCode == "13") {
-            handleSubmitWord();
-            return;
-        }
-        if (evt.keyCode == "8") {
-            handleDeleteLetter();
-            return;
-        }
-        else{
-            char = String.fromCharCode(evt.keyCode).toLowerCase()
-            if(/[a-z]/.test(char)){
-                updateCurrentWord(char)
-                keyBox.classList.remove("blinking-cursor");
+        if (foundWords.length < words.length){
+            if (evt.keyCode == "13") {
+                handleSubmitWord();
+                return;
             }
-        }
+            if (evt.keyCode == "8") {
+                handleDeleteLetter();
+                return;
+            }
+            else{
+                char = String.fromCharCode(evt.keyCode).toLowerCase()
+                if(/[a-z]/.test(char)){
+                    updateCurrentWord(char)
+                    keyBox.classList.remove("blinking-cursor");
+                }
+            }
+        }   
     }
 
 
@@ -113,12 +116,20 @@ document.addEventListener("DOMContentLoaded", () => {
             updateFoundWordsDisplay();
             sortDisplay();
             updatePoints(currentWord);
+
+            if(foundWords.length < words.length){
+                const timeout = setTimeout(revertDisplay, 850);
+            }
+            if(foundWords.length == words.length){
+                keyBox.textContent = 'completed';
+            }
             
         }
         if(!words.includes(currentWord)){
             animateWrong();
+            const timeout = setTimeout(revertDisplay, 850);
         }
-        const timeout = setTimeout(revertDisplay, 1000);
+        
 
     }
     function checkWord(){
