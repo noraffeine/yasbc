@@ -152,6 +152,10 @@ document.addEventListener("DOMContentLoaded", () => {
             function handleSubmitWord(){
                 let currentWord = currentWordArr.join('')
                 currentWordArr = []; 
+                if(foundWords.includes(currentWord)){
+                    animateWrong();
+                    const timeout = setTimeout(revertDisplay, 850);
+                }
                 if((words.includes(currentWord)) && (!foundWords.includes(currentWord))){
                     foundWords.push(currentWord) 
                     updateFoundWordsDisplay();
