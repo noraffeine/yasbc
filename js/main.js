@@ -152,7 +152,7 @@ document.addEventListener("DOMContentLoaded", () => {
             function handleSubmitWord(){
                 let currentWord = currentWordArr.join('')
                 currentWordArr = []; 
-                if(words.includes(currentWord) && !foundWords.includes(currentWord)){
+                if((words.includes(currentWord)) && (!foundWords.includes(currentWord))){
                     foundWords.push(currentWord) 
                     updateFoundWordsDisplay();
                     sortDisplay();
